@@ -4,7 +4,7 @@ import FormInput from "./components/FormInput";
 import "./index.css";
 
 render(
-  <div>
+  <div className="container-1">
     <FormInput />
   </div>,
   document.getElementById("app")
