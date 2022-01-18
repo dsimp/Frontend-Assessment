@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-style: solid;
-  border-color: blue;
   height: 600px;
   border-radius: 25px;
   width: 300px;
   background-color: rgb(226, 226, 226);
+  flex-direction: column;
+  box-shadow: 10px 10px 5px grey;
 }
 
 .container div {
@@ -19,4 +19,52 @@
 }
 p {
   color: red;
+}
+h3 {
+  background-color: darkseagreen;
+  color: lime;
+  width: 80%;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  position: absolute;
+  left: 75px;
+  border-radius: 5px;
+  margin-top: 50px;
+  width: 50%;
+  background-color: limegreen;
+}
+
+@media screen and (max-width: 426px) {
+  .container {
+    height: 900px;
+    width: 500px;
+  }
+  .container div {
+    padding-bottom: 50px;
+  }
+  .container div label {
+    padding-right: 20px;
+    font-size: x-large;
+  }
+}
+
+@media screen and (min-width: 1438px) {
+  .container {
+    height: 900px;
+    width: 400px;
+  }
+  .container div {
+    padding-bottom: 40px;
+    font-size: x-large;
+  }
+  .container input {
+    font-size: inherit;
+  }
+  button {
+    left: 95px;
+    font-size: x-large;
+  }
 }

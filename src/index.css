@@ -9,6 +9,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-style: solid;
-  border-color: yellow;
+  font-family: Arial, Helvetica, sans-serif;
 }

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useEndPoint from "./hooks/useEndPoint";
 import useSendPost from "./hooks/useSendPost";
 import "./FormInput.css";
+import SignUpSuccess from "./SignUpSuccess";
 
 function FormInput() {
   const [inputs, setInputs] = useState({});
@@ -23,10 +24,25 @@ function FormInput() {
 
     if (Object.keys(formErrors).length === 0) {
       setSubmitted(true);
+    } else {
+      setSubmitted(false);
     }
     //setSubmitted(true);
     console.log(inputs);
     console.log(status);
+
+    handleClearForm(inputs);
+  };
+
+  const handleClearForm = (values) => {
+    if (submitted) {
+      values.state = "";
+      values.email = "";
+      values.password = "";
+      values.occupation = "";
+      values.name = "";
+      setSubmitted(false);
+    }
   };
 
   //useEffect(() => {
@@ -63,11 +79,9 @@ function FormInput() {
     return errors;
   };
 
-  console.log(state);
-  console.log(occupation);
-
   return (
     <div className="container">
+      {submitted ? <SignUpSuccess name={inputs.name} /> : null}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name"> Full Name</label>
@@ -145,7 +159,7 @@ function FormInput() {
           </select>
           <p>{formErrors.state}</p>
         </div>
-        <button type="submit"></button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
