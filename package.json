@@ -1,6 +1,6 @@
 {
   "name": "ps-redux",
-  "description": "React and Redux Pluralsight course by Cory House",
+  "description": "Djvon Simpson Frontend Assessment",
   "scripts": {
     "start": "webpack serve --config webpack.config.dev.js --port 3000"
   },
