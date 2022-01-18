@@ -8,18 +8,18 @@ function FormInput() {
   const [inputs, setInputs] = useState({});
   const [formErrors, setFormErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-  const { state, occupation } = useEndPoint();
-  useSendPost(inputs, submitted);
+  const { state, occupation } = useEndPoint(); // hook to fetch data for our state and occupation selections
+  useSendPost(inputs, submitted); // hook to send our User data only on the condition of "submitted"
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setInputs((values) => ({ ...values, [name]: value })); // creating the key: value pair from user inputs and storing them in inputs object
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setInputs((inputs) => ({ ...inputs }));
+    setInputs((inputs) => ({ ...inputs })); // copies the inputs object (name: value) from handleChange function
     setFormErrors(handleErrors(inputs));
 
     if (Object.keys(formErrors).length === 0) {
@@ -27,15 +27,13 @@ function FormInput() {
     } else {
       setSubmitted(false);
     }
-    //setSubmitted(true);
-    console.log(inputs);
-    console.log(status);
 
     handleClearForm(inputs);
   };
 
   const handleClearForm = (values) => {
     if (submitted) {
+      //After submit, would like form to clear out for new submission. Clears out all values
       values.state = "";
       values.email = "";
       values.password = "";
@@ -45,15 +43,11 @@ function FormInput() {
     }
   };
 
-  //useEffect(() => {
-  //if (Object.keys(formErrors).length === 0) {
-  //setSubmitted(true);
-  //}
-  //}, [formErrors]);
+  // Creating our errors object to store our User errors depending on value conditions
 
   const handleErrors = (values) => {
     const errors = {};
-    const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i; //Regex to test if input is email format
 
     if (!values.name || / /.test(values.name) === false) {
       errors.name = "First and last name is required";
@@ -70,6 +64,7 @@ function FormInput() {
       errors.password = "Please submit password with 5 or more characters";
     }
     if (!values.occupation || values.occupation === " ") {
+      // if conditionals for select dropdowns to be tested for input
       errors.occupation = "Please select a occupation";
     }
     if (!values.state || values.state === " ") {
